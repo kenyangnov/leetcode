@@ -64,6 +64,7 @@ public:
         q.push(start);
         while(!q.empty()){
             //总忘记BFS这个循环，导致变成DFS
+			//for(int i=0;i<q.size();i++) 这样是错误的，因为q.size()在不断变化
             for(int i=q.size();i>0;i--){
                 string top=q.front();
                 q.pop();
