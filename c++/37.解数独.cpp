@@ -31,6 +31,7 @@ bool backTrack(vector<vector<char>>& board, int i, int j) {
             continue;
         }
         board[i][j] = ch;
+        //得到最优解即停止搜索
         if (backTrack(board, i, j + 1)) {
             return true;
         }
