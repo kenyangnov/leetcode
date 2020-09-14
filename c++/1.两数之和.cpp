@@ -1,4 +1,4 @@
-class Solution {
+class Solution1 {
 public:
     static bool compare(pair<int, int> a, pair<int, int> b) {
         return a.second<b.second;
@@ -20,6 +20,25 @@ public:
                 return {temp[i].first, temp[j].first};
             }
         }
+        return {};
+    }
+};
+
+class Solution2 {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        map<int, int> hashTable;
+        vector<int> ret;
+        for (int i = 0; i < nums.size(); i++) {
+			hashTable[nums[i]] = i;
+		}
+        for (int i = 0; i < nums.size(); i++) {
+			if (hashTable[target - nums[i]] && (hashTable[target - nums[i]] != i)) {
+				ret.push_back(i);
+				ret.push_back(hashTable[target - nums[i]]);
+				return ret;
+			}
+		}
         return {};
     }
 };
