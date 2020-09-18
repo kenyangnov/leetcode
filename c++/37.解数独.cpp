@@ -55,3 +55,44 @@ int main() {
     solveSudoku(board);
     system("pause");
 }
+
+// 独立完成
+class Solution {
+public:
+    bool check(vector<vector<char>>& board, int row, int col, char c){
+        for(int i=0; i< 9; i++){
+            if(board[row][i]==c) return false;
+            if(board[i][col]==c) return false;
+            if(board[(row/3)*3+ i/3][ (col/3)*3+i%3] == c) return false;
+        }
+        return true;
+    }
+
+    bool backTrace(vector<vector<char>>& board, int row, int col){
+        if(col==9){
+            col = 0;
+            row++;
+        }
+        if(row==9){
+            return true;
+        }
+        if(board[row][col]=='.'){
+            for(int ch='1'; ch<='9'; ch++){
+                if(check(board, row, col, ch)){
+                    board[row][col]=ch;
+                    if(backTrace(board, row, col+1)){
+                        return true;
+                    }
+                    board[row][col]='.';
+                } 
+            }
+        } else{
+            return backTrace(board, row, col+1);
+        }
+        return false;
+    }
+
+    void solveSudoku(vector<vector<char>>& board) {
+        backTrace(board, 0, 0);
+    }
+};
