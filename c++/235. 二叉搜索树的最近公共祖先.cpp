@@ -25,6 +25,15 @@ class Solution1 {
             } else {
                 break;
             }
+            /*
+            WA:
+            if (path_p[i]->val == path_q[i]->val) {
+                continue;
+            } else {
+                ret = path_p[i-1];
+                break;
+            }
+            */
         }
         return ret;
     }
