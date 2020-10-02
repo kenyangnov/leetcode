@@ -1,5 +1,22 @@
-// TODO: 前序遍历
-
+// 前序遍历
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> ret;
+        stack<TreeNode*> st;
+        TreeNode* cur = root;
+        while (!st.empty() || cur) {
+            while (cur) {
+                ret.push_back(cur->val);
+                st.push(cur);
+                cur = cur->left;
+            }
+            cur = st.top()->right;
+            st.pop();
+        }
+        return ret;
+    }
+};
 
 // 中序遍历
 class Solution {
